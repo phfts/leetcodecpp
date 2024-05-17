@@ -24,14 +24,6 @@ int lengthOfLongestSubstring(string s)
         }
         else
         {
-            // aabaabxbb
-            // values = {a,b,c,b}
-            for (auto &c : values)
-            {
-                std::cout << c;
-            }
-            std::cout << std::endl;
-
             for (int j = leftPos; j < pos; j++)
             {
                 char leftChar = s[j];
