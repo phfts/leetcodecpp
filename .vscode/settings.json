@@ -62,5 +62,6 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "unordered_set": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "/mnt/c/Users/phfts/work/cpp/715-range_module"
 }
