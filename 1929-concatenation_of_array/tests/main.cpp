@@ -13,6 +13,7 @@ vector<int> getConcatenation(vector<int> &nums)
         ans[i] = nums[i];
         ans[i + n] = nums[i];
     }
+    return ans;
 }
 
 TEST(Example, Example1)

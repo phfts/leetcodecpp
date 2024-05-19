@@ -1,0 +1,42 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install libgtest-dev
+    - name: Run all tests
+      run: |
+        # Encontra todos os diretórios que começam com dígitos
+        for dir in [0-9]*/; do
+            # Verifica se o diretório existe
+            if [ -d "$dir" ]; then
+                echo "Entrando no diretório $dir"
+                cd "$dir" || continue  # Entra no diretório ou continua para o próximo em caso de erro
+        
+                # Verifica se o arquivo Makefile existe no diretório
+                if [ -f "Makefile" ]; then
+                    mkdir -p bin/
+                    echo "Executando 'make test' em $dir"
+                    make test  # Roda o comando make test
+                else
+                    echo "Makefile não encontrado em $dir"
+                fi
+        
+                cd ..  # Volta para o diretório pai
+            fi
+        done
+
+      
