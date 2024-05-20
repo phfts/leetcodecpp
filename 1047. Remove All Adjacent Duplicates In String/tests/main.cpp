@@ -8,66 +8,31 @@ using namespace std;
 
 string removeDuplicates(string s)
 {
-    char* chars;
-    chars = s.data();
-    int n = s.length();
-    
-    int left = 0;
-    int right = 1;
-    while (right < n)
+    vector<char> chars;
+    int i = 0;
+    while (i < s.length())
     {
-        if (chars[left] == chars[right])
+        char c = s[i++];
+        if (chars.empty())
         {
-            chars[left--] = -1;
-            chars[right++] = -1;
-            while (left >= 0 && chars[left] < 0)
-            {
-                left--;
-            }
-            if (left < 0)
-            {
-                if (chars[right-1] > 0)
-                {
-                    left = right - 1;
-                }
-                else
-                {
-                    right++;
-                    left = right - 1;
-                }
-            }
+            chars.push_back(c);
         }
-        else if (right - left > 1)
+        else if (chars.back() != c)
         {
-            if (chars[right-1] > 0)
-            {
-                left = right-1;
-            }
-            else
-            {
-                right++;
-                left = right -1;
-            }
+            chars.push_back(c);
         }
-        else
+        else 
         {
-            right++;
-            left++;
+            chars.pop_back();
         }
     }
-
     stringstream ss;
-    for (int i=0;i<n;i++)
+    for (auto &x : chars)
     {
-        char x = chars[i];
-        if (x > 0)
-        {
-            ss << (char)(x);
-        }
+        ss << (char)(x);
     }
     return ss.str();
 }
-
 
 TEST(Example, Example1)
 {
@@ -92,7 +57,7 @@ TEST(Example, Example2)
 TEST(Example, LimitExample1)
 {
     stringstream ss;
-    for (int i = 0; i < pow(10,5); i++)
+    for (int i = 0; i < pow(10, 5); i++)
     {
         ss << 'a';
     }
@@ -103,9 +68,9 @@ TEST(Example, LimitExample1)
 TEST(Example, LimitExample2)
 {
     stringstream ss;
-    for (int i = 0; i < pow(10,5); i++)
+    for (int i = 0; i < pow(10, 5); i++)
     {
-        ss << (char)('a' + (i%23));
+        ss << (char)('a' + (i % 23));
     }
     string s = ss.str();
     EXPECT_EQ(s, removeDuplicates(s));
