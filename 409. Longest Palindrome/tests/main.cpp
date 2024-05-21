@@ -7,7 +7,7 @@ using namespace std;
 int longestPalindrome(string s)
 {
     int n = s.length();
-    if (n <= 1) 
+    if (n <= 1) [[unlikely]]
         return n;
 
     unordered_map<char, int> ocurrences; 
