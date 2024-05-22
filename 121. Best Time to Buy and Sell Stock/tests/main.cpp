@@ -12,7 +12,6 @@ int maxProfit(vector<int> &prices)
     for (auto &price : prices)
     {
         buy = buy < price ? buy : price;
-        
         int diff = price - buy;
         maxProfit = diff > maxProfit ? diff : maxProfit;
     }

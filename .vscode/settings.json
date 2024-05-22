@@ -62,7 +62,8 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "unordered_set": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "fstream": "cpp"
     },
     "cmake.sourceDirectory": "/mnt/c/Users/phfts/work/cpp/715-range_module"
 }
