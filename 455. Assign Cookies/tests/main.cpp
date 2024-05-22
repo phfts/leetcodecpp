@@ -24,7 +24,7 @@ int findContentChildren(vector<int>& g, vector<int>& s) {
         }
         else
         {
-            std::cout << "Feeding child " << gi << " with greedy " << g[gi] << " with cookie " << si << " of size " << s[si] << std::endl;
+            // std::cout << "Feeding child " << gi << " with greedy " << g[gi] << " with cookie " << si << " of size " << s[si] << std::endl;
             fedChildren++;
             gi++;
             si++;
